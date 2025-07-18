@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const dbConnect = () =>
   mongoose
     .connect(process.env.MONGODB_URI)
-    .then(() => console.log("MongoDB connected"))
+    .then(() => console.log("MongoDB connected ✅"))
     .catch((err) => console.error(err));
 
 // Export the connection
