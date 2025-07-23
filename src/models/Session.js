@@ -25,7 +25,7 @@ const sessionSchema = new mongoose.Schema(
     },
     summary: { type: String },
     keyTopics: [{ type: String }],
-    emergencyLevel: { type: String, enum: Object.values(EMERGENCY_LEVEL) },
+    emergencyLevel: { type: String, enum: Object.values(EMERGENCY_LEVEL), default: EMERGENCY_LEVEL.LOW },
   },
   { timestamps: true }
 );

@@ -1,3 +1,15 @@
+// Get single patient by ID
+exports.getPatientById = async (req, res) => {
+  try {
+    const patient = await Patient.findById(req.params.id);
+    if (!patient) {
+      return res.status(404).json({ error: "Patient not found" });
+    }
+    res.json(patient);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 const Patient = require("../models/Patient");
 
 // Add a new patient
@@ -21,10 +33,8 @@ exports.getPatients = async (req, res) => {
     if (queryKeys.length === 1) {
       const field = queryKeys[0];
       const value = req.query[field];
-      filter[field] = value === 'true' ? true : false
+      filter[field] = value === "true" ? true : false;
     }
-
-    console.log(filter);
 
     const patients = await Patient.find(filter);
     res.json(patients);

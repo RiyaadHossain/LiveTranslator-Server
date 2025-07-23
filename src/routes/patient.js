@@ -9,4 +9,7 @@ router.post("/", auth.protect, patientController.addPatient);
 // Get patient list (protected)
 router.get("/", auth.protect, patientController.getPatients);
 
+// Get single patient by ID (protected)
+router.get("/:id", auth.protect, patientController.getPatientById);
+
 module.exports = router;
